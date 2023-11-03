@@ -6,4 +6,11 @@ credentials::set_github_pat()
 
 # three states - modified, staged, committed 
 # can't commit anything from modified state - has to be staged
-# files in staged state will be committed to github repo next time commit is run
+# files in staged state will be committed to github repo next time commit is run# files in staged state will be committed to github repo next time commit is run# files in staged state will be committed to github repo next time commit is run
+
+###
+read.csv()
+
+## code code 
+# more code 
+# more stuff
