@@ -26,6 +26,7 @@
 library(terra)
 library(stars)
 library(sp)
+library(sf)
 library(spatialEco)
 library(dplyr)
 library(tidyverse)

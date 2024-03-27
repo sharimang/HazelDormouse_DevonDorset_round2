@@ -10,7 +10,7 @@
 
 
 #### 1. SET UP ####
-pacman::p_load(ggplot2, RColorBrewer, classInt, colorspace, terra, spatialEco, dyplr, here, conflicted)
+pacman::p_load(ggplot2, RColorBrewer, classInt, colorspace, terra, spatialEco, sf, dyplr, here, conflicted)
 conflicted::conflict_prefer("here", "here")
 
 wd.dat <- here("data/")
@@ -51,7 +51,7 @@ devdor_buff <- terra::vect("gis/devondorset_buffer5km.shp")
 #crs(devdor_buff) 
 
 # Devon-Dorset county borders
-dd_county <- st_read("gis/os_boundary/bdline_gb_DevDor.shp")
+dd_county <- sf::st_read("gis/os_boundary/bdline_gb_DevDor.shp")
 
 # NDMP sites 
 ndmp_bounds <- terra::vect("gis/NDMP_boundaries_Oct21_devdor.shp")
@@ -63,14 +63,14 @@ vals_true <- vals_true_sample[vals_true_sample$source == "raster", ]
 
 # Occurrence data 
 # All presence and pseudo-absence (cleaned - used in model)
-occ <- st_read(paste0(wd.dist, "occ100m1990_dd_clean.shp"))
+occ <- sf::st_read(paste0(wd.dist, "occ100m1990_dd_clean.shp"))
 
 # Survey absences -- full dataset, from previous project 
-surv_abs <- st_read(paste0(wd.dist, "surv_ab_24Jan2022.shp"))
+surv_abs <- sf::st_read(paste0(wd.dist, "surv_ab_24Jan2022.shp"))
 
 # Urban areas --> to be excluded from possible survey sites 
 st_layers(paste0(wd.dat, "OS_Built_Up_Areas/OS_Open_Built_Up_Areas.gpkg")) 
-urban <- st_read(paste0(wd.dat, "OS_Built_Up_Areas/OS_Open_Built_Up_Areas.gpkg"), layer = "OS_Open_Built_Up_Areas")
+urban <- sf::st_read(paste0(wd.dat, "OS_Built_Up_Areas/OS_Open_Built_Up_Areas.gpkg"), layer = "OS_Open_Built_Up_Areas")
 
 
 
